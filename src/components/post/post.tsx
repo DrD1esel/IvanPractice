@@ -1,6 +1,6 @@
 import {FC, ReactElement} from "react";
 import dayjs from 'dayjs'
-import './post.css'
+import "./Post.css";
 
 type PostProps = {
   title: string,
@@ -18,6 +18,6 @@ const Post: FC<PostProps> = ({title, body, createdAt}): ReactElement => {
       <p>{date}</p>
     </div>
   );
-};
+}
 
 export default Post;
