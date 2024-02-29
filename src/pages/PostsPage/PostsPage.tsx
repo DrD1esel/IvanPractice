@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Post from "../../components/Post/Post.tsx";
+import { PostObject } from "../../types/mainTypes.tsx";
 
 const getAllPosts = async () => {
   const response = await fetch('http://localhost:8000/posts');
@@ -26,11 +27,3 @@ export const PostPage = () => {
 }
 
 export default PostPage;
-
-type PostObject = {
-  id: string,
-  title: string,
-  body: string,
-  userId: string,
-  createdAt: number,
-};

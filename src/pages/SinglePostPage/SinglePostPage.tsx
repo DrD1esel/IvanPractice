@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Post from "../../components/Post/Post.tsx";
+import { PostObject } from "../../types/mainTypes.tsx";
+import { UserObject } from "../../types/mainTypes.tsx";
 
 const getPostById = async (postId: string) => {
   const response = await fetch(`http://localhost:8000/posts/${postId}`);
@@ -44,16 +46,3 @@ export const SinglePostPage = () => {
 
 export default SinglePostPage;
 
-type PostObject = {
-  id: string,
-  title: string,
-  body: string,
-  userId: string,
-  createdAt: number,
-};
-
-type UserObject = {
-  id: string,
-  name: string,
-  email: string,
-};

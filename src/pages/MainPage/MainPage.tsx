@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Post from "../../components/Post/Post.tsx";
+import { PostObject } from "../../types/mainTypes.tsx";
 import "./MainPage.css";
 
 const get3LastPosts = async () => {
@@ -26,11 +27,3 @@ export const MainPage = () => {
 }
 
 export default MainPage;
-
-type PostObject = {
-  id: string,
-  title: string,
-  body: string,
-  userId: string,
-  createdAt: number,
-};
