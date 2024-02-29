@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Post from "../../components/Post/Post.tsx";
 import { PostObject, UserObject } from "../../types/mainTypes.tsx";
 import { getUserById, getPosts } from "../../services/api.tsx";
 import { PostsMode } from "../../enums/posts.tsx";
 
 export const SinglePostPage = () => {
+  const navigate = useNavigate();
   const { postId } = useParams();
   const [currentPost, setCurrentPost] = useState<PostObject>();
   const [currentUser, setCurrentUser] = useState<UserObject>();
@@ -14,8 +15,12 @@ export const SinglePostPage = () => {
     if (postId !== undefined) {
       getPosts(PostsMode.ById, postId)
       .then((post) => {
-        setCurrentPost(post)
-        return getUserById(post.userId)
+        if (Object.keys(post).length !== 0) {
+          setCurrentPost(post)
+          return getUserById(post.userId)
+        } else {
+          navigate('/posts');
+        }
       })
       .then((user) => setCurrentUser(user))
     }
