@@ -18,14 +18,6 @@ export const MainPage = () => {
   
   return (
     <div>
-      <header>
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png'
-          width='48'
-          height='40'
-        />
-        <h1 style={{marginLeft: "20px"}}>IvanPractice</h1>
-      </header>
       <ul>
         {posts.map((value) => <li><Post key={value.id} id={value.id} title={value.title} body={value.body} createdAt={value.createdAt} /></li>)}
       </ul>
