@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Post from "../../components/a/Post.tsx";
+import Post from "../../components/Post/Post.tsx";
 import "./MainPage.css";
 
 const get3LastPosts = async () => {

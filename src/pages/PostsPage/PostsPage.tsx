@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Post from "../../components/a/Post.tsx";
+import Post from "../../components/Post/Post.tsx";
 
 const getAllPosts = async () => {
   const response = await fetch('http://localhost:8000/posts');

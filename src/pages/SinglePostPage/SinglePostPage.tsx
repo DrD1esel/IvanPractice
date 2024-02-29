@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Post from "../../components/a/Post.tsx";
+import Post from "../../components/Post/Post.tsx";
 
 const getPostById = async (postId: string) => {
   const response = await fetch(`http://localhost:8000/posts/${postId}`);
