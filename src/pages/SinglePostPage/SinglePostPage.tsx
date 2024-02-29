@@ -1,20 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Post from "../../components/Post/Post.tsx";
-import { PostObject } from "../../types/mainTypes.tsx";
-import { UserObject } from "../../types/mainTypes.tsx";
-
-const getPostById = async (postId: string) => {
-  const response = await fetch(`http://localhost:8000/posts/${postId}`);
-  const post = await response.json();
-  return post;
-}
-
-const getUserById = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/users/${userId}`);
-  const user = await response.json();
-  return user;
-}
+import { PostObject, UserObject } from "../../types/mainTypes.tsx";
+import { getUserById, getPosts } from "../../services/api.tsx";
+import { PostsMode } from "../../enums/posts.tsx";
 
 export const SinglePostPage = () => {
   const { postId } = useParams();
@@ -23,7 +12,7 @@ export const SinglePostPage = () => {
 
   useEffect(() => {
     if (postId !== undefined) {
-      getPostById(postId)
+      getPosts(PostsMode.ById, postId)
       .then((post) => {
         setCurrentPost(post)
         return getUserById(post.userId)
@@ -34,10 +23,10 @@ export const SinglePostPage = () => {
 
   return (
     <div>
-      {currentPost !== undefined &&
+      {currentPost &&
         <Post id={currentPost.id} title={currentPost.title} body={currentPost.body} createdAt={currentPost.createdAt} />
       }
-      {currentUser !== undefined && 
+      {currentUser && 
         <p style={{textAlign: "end"}}><strong>{currentUser.name}</strong> {currentUser.email}</p>
       }
     </div>

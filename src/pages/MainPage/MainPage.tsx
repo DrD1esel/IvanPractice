@@ -1,20 +1,14 @@
 import { useEffect, useState } from "react";
 import Post from "../../components/Post/Post.tsx";
 import { PostObject } from "../../types/mainTypes.tsx";
-import "./MainPage.css";
-
-const get3LastPosts = async () => {
-  const response = await fetch('http://localhost:8000/posts?_sort=createdAt&_order=desc&_limit=3');
-  const posts = await response.json();
-  const arr: Array<PostObject> = Array.from(posts);
-  return arr;
-}
+import { getPosts } from "../../services/api.tsx";
+import { PostsMode } from "../../enums/posts.tsx";
 
 export const MainPage = () => {
   const [posts, setPosts] = useState<PostObject[]>([]);
 
   useEffect(() => {
-    get3LastPosts().then((value) => setPosts(value));
+    getPosts(PostsMode.Last3).then((value) => setPosts(value));
   }, []);
   
   return (

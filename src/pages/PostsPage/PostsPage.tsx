@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
 import Post from "../../components/Post/Post.tsx";
 import { PostObject } from "../../types/mainTypes.tsx";
-
-const getAllPosts = async () => {
-  const response = await fetch('http://localhost:8000/posts');
-  const posts = await response.json();
-  return posts;
-}
+import { getPosts } from "../../services/api.tsx";
+import { PostsMode } from "../../enums/posts.tsx";
 
 export const PostPage = () => {
   const [posts, setPosts] = useState<PostObject[]>();
 
   useEffect(() => {
-    getAllPosts().then((value) => setPosts(value));
+    getPosts(PostsMode.All).then((value) => setPosts(value));
   }, []);
 
   return (
     <div>
-      {posts !== undefined && 
+      {posts && 
       <ul>
         {posts.map((value) => <li><Post key={value.id} id={value.id} title={value.title} body={value.body} createdAt={value.createdAt} /></li>)}
       </ul>
