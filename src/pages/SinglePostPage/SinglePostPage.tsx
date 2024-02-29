@@ -15,14 +15,17 @@ export const SinglePostPage = () => {
     if (postId !== undefined) {
       getPosts(PostsMode.ById, postId)
       .then((post) => {
-        if (Object.keys(post).length !== 0) {
-          setCurrentPost(post)
-          return getUserById(post.userId)
+        if (Object.keys(post).length !== 0) { // Если на сервере нет поста с данным id
+          setCurrentPost(post);
+          return getUserById(post.userId);
         } else {
-          navigate('/posts');
+          return Promise.reject(new Error('404 Not Found'));
         }
       })
-      .then((user) => setCurrentUser(user))
+      .then((user) => setCurrentUser(user), (reject) => {
+        console.log(reject);
+        navigate('/posts');
+      });
     }
   }, []);
 
