@@ -12,7 +12,7 @@ type PostProps = {
 
 const Post: FC<PostProps> = ({id, title, body, createdAt}): ReactElement => {
   const date = dayjs(createdAt).format('DD-MM-YYYY HH:mm');
-  const route = `http://localhost:5173/posts/${id}`;
+  const route = `/posts/${id}`;
 
   return (
     <div className="PostCard">
