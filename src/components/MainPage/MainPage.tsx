@@ -2,18 +2,6 @@ import { useEffect, useState } from "react";
 import Post from "../Post/Post.tsx";
 import "./MainPage.css";
 
-const getUsers = async () => {
-  const response = await fetch('http://localhost:8000/users');
-  const users = await response.json();
-  console.log(users);
-}
-
-const getPosts = async () => {
-  const response = await fetch('http://localhost:8000/posts');
-  const posts = await response.json();
-  return posts;
-}
-
 const get3LastPosts = async () => {
   const response = await fetch('http://localhost:8000/posts?_sort=createdAt&_order=desc&_limit=3');
   const posts = await response.json();
