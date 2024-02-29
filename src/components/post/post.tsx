@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import "./Post.css";
 
 type PostProps = {
-  id: number,
+  id: string,
   title: string,
   body: string,
   createdAt: number,
