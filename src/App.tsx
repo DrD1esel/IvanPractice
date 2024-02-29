@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./App.css";
-import MainPage from './components/MainPage/MainPage.tsx';
-import PostsPage from './components/PostsPage/PostsPage.tsx';
-import SinglePostPage from './components/SinglePostPage/SinglePostPage.tsx';
+import MainPage from './pages/MainPage/MainPage.tsx';
+import PostsPage from './pages/PostsPage/PostsPage.tsx';
+import SinglePostPage from './pages/SinglePostPage/SinglePostPage.tsx';
 
 export const App = () => {
   return (
