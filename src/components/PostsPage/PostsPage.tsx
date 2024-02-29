@@ -18,7 +18,7 @@ export const PostPage = () => {
     <div>
       {posts !== undefined && 
       <ul>
-        {posts.map((value) => <li><Post key={value.id} title={value.title} body={value.body} createdAt={value.createdAt} /></li>)}
+        {posts.map((value) => <li><Post key={value.id} id={value.id} title={value.title} body={value.body} createdAt={value.createdAt} /></li>)}
       </ul>
       }
     </div>

@@ -15,7 +15,6 @@ export const MainPage = () => {
   useEffect(() => {
     get3LastPosts().then((value) => setPosts(value));
   }, []);
-
   
   return (
     <div>
@@ -28,7 +27,7 @@ export const MainPage = () => {
         <h1 style={{marginLeft: "20px"}}>IvanPractice</h1>
       </header>
       <ul>
-        {posts.map((value) => <li><Post key={value.id} title={value.title} body={value.body} createdAt={value.createdAt} /></li>)}
+        {posts.map((value) => <li><Post key={value.id} id={value.id} title={value.title} body={value.body} createdAt={value.createdAt} /></li>)}
       </ul>
     </div>
   );
