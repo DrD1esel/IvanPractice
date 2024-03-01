@@ -8,14 +8,18 @@ export const PostPage = () => {
   const [posts, setPosts] = useState<PostObject[]>();
 
   useEffect(() => {
-    getPosts(PostsMode.All).then((value) => setPosts(value));
+    getPosts(PostsMode.All)
+    .then((value) => setPosts(value))
+    .catch((reject) => {
+      console.log(reject);
+    });
   }, []);
 
   return (
     <div>
       {posts && 
       <ul>
-        {posts.map((value) => <li><Post key={value.id} id={value.id} title={value.title} body={value.body} createdAt={value.createdAt} /></li>)}
+        {posts.map((value) => <li key={value.id}><Post id={value.id} title={value.title} body={value.body} createdAt={value.createdAt} /></li>)}
       </ul>
       }
     </div>

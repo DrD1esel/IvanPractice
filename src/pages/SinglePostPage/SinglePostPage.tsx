@@ -15,14 +15,11 @@ export const SinglePostPage = () => {
     if (postId !== undefined) {
       getPosts(PostsMode.ById, postId)
       .then((post) => {
-        if (Object.keys(post).length !== 0) { // Если на сервере нет поста с данным id
-          setCurrentPost(post);
-          return getUserById(post.userId);
-        } else {
-          return Promise.reject(new Error('404 Not Found'));
-        }
+        setCurrentPost(post);
+        return getUserById(post.userId); 
       })
-      .then((user) => setCurrentUser(user), (reject) => {
+      .then((user) => setCurrentUser(user))
+      .catch((reject) => {
         console.log(reject);
         navigate('/posts');
       });

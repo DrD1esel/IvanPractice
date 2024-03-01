@@ -20,6 +20,10 @@ export const getPosts = async (mode: number, postId: string='0') => {
       response = await fetch('http://localhost:8000/posts');
   }
 
+  if (!response.ok) {
+    throw new Error('Request failed');
+  }
+
   const posts = await response.json();
   return posts;
 }
