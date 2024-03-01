@@ -3,11 +3,25 @@
     {
       "id": "1",
       "name": "John Doe",
-      "email": "johndoe@test.com"
+      "email": "johndoe@test.com",
+      "avatarUrl": "/images/user1.png"
     },
     {
       "id": "2",
       "name": "Alex Smith",
+      "email": "alexsmith@test.com",
+      "avatarUrl": "/images/user2.png"
+    }
+  ],
+  "auth": [
+    {
+      "userId": "1",
+      "password": "1111",
+      "email": "johndoe@test.com"
+    },
+    {
+      "userId": "2",
+      "password": "2222",
       "email": "alexsmith@test.com"
     }
   ],
