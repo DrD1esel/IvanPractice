@@ -1,5 +1,10 @@
-header {
+.appHeader {
   display: flex;
   align-items: center;
   padding-left: 40px;
+}
+
+.appHeader > h1 {
+  margin-left: 20px;
+  cursor: pointer;
 }
