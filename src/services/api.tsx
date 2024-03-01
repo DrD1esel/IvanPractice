@@ -23,7 +23,7 @@ export const getPosts = async (id: string | null, sort: string | null, order: st
   console.log(route);
   const response = await fetch(route);
   if (!response.ok) {
-    throw new Error('Request failed');
+    throw new Error(`${response.status}`);
   }
 
   const posts = await response.json();
