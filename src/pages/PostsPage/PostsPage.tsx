@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import Post from "../../components/Post/Post.tsx";
 import { PostObject } from "../../types/mainTypes.tsx";
 import { getPosts } from "../../services/api.tsx";
-import { PostsMode } from "../../enums/posts.tsx";
 
-export const PostPage = () => {
+export const PostsPage = () => {
   const [posts, setPosts] = useState<PostObject[]>();
 
   useEffect(() => {
-    getPosts(PostsMode.All)
+    getPosts(null, null, null, null)
     .then((value) => setPosts(value))
     .catch((reject) => {
       console.log(reject);
@@ -26,4 +25,4 @@ export const PostPage = () => {
   );
 }
 
-export default PostPage;
+export default PostsPage;

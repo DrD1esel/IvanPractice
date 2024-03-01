@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import Post from "../../components/Post/Post.tsx";
 import { PostObject } from "../../types/mainTypes.tsx";
 import { getPosts } from "../../services/api.tsx";
-import { PostsMode } from "../../enums/posts.tsx";
 
 export const MainPage = () => {
   const [posts, setPosts] = useState<PostObject[]>([]);
 
   useEffect(() => {
-    getPosts(PostsMode.Last3)
+    getPosts(null, 'createdAt', 'desc', 3)
     .then((value) => setPosts(value))
     .catch((reject) => {
       console.log(reject);
