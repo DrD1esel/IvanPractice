@@ -12,25 +12,24 @@ export const SinglePostPage = () => {
 
   useEffect(() => {
     if (postId !== undefined) {
-      getPosts(postId, null, null, null)
+      getPosts({id: postId})
       .then((post) => {
         setCurrentPost(post);
-        return getUserById(post.userId); 
+        return getUserById(post.userId);
+      })
+      .catch(() => {
+        navigate('/posts');
       })
       .then((user) => setCurrentUser(user))
-      .catch((reject) => {
-        console.log(reject);
-        navigate('/posts');
-      });
     }
-  }, []);
+  }, [postId, navigate]);
 
   return (
     <div>
       {currentPost &&
         <Post id={currentPost.id} title={currentPost.title} body={currentPost.body} createdAt={currentPost.createdAt} />
       }
-      {currentUser && 
+      {currentUser &&
         <p style={{textAlign: "end"}}><strong>{currentUser.name}</strong> {currentUser.email}</p>
       }
     </div>

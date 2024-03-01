@@ -1,31 +1,35 @@
+import { apiUrl } from "../config";
+
 export const getUserById = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/users/${userId}`);
+  const response = await fetch(`${apiUrl}/users/${userId}`);
   const user = await response.json();
   return user;
 }
 
-export const getPosts = async (id: string | null, sort: string | null, order: string | null, limit: number | null) => {
-  let route = `http://localhost:8000/posts`;
-  if (id) {
-    route = route.concat('/', id);
-  }
+type GetPostArgs = {
+  id?: string;
+  sort?: string;
+  order?: string;
+  limit?: number;
+}
+
+export const getPosts = async ({ id, sort, order, limit}: GetPostArgs = {}) => {
+  const params = new URLSearchParams();
+
   if (sort) {
-    route = route.concat('?_sort=', sort);
+    params.append('_sort', sort)
   }
   if (order) {
-    route = route.concat('&_order=', order);
+    params.append('_order', order)
   }
   if (limit) {
-    route.indexOf('?') === -1 ? route += '?' : route += '&';
-    route = route.concat('_limit=', `${limit}`);
+    params.append('_limit', limit.toString())
   }
- 
-  console.log(route);
-  const response = await fetch(route);
+
+  const response = await fetch(`${apiUrl}/posts${id ? '/' + id : ''}?${params.toString()}`);
   if (!response.ok) {
     throw new Error(`${response.status}`);
   }
 
-  const posts = await response.json();
-  return posts;
+  return response.json();
 }

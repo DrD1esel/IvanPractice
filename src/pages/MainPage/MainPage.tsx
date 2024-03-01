@@ -7,13 +7,13 @@ export const MainPage = () => {
   const [posts, setPosts] = useState<PostObject[]>([]);
 
   useEffect(() => {
-    getPosts(null, 'createdAt', 'desc', 3)
+    getPosts({sort: 'createdAt', order: 'desc', limit: 3})
     .then((value) => setPosts(value))
     .catch((reject) => {
       console.log(reject);
     });
   }, []);
-  
+
   return (
     <div>
       <ul>

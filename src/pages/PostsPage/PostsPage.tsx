@@ -7,7 +7,7 @@ export const PostsPage = () => {
   const [posts, setPosts] = useState<PostObject[]>();
 
   useEffect(() => {
-    getPosts(null, null, null, null)
+    getPosts()
     .then((value) => setPosts(value))
     .catch((reject) => {
       console.log(reject);
@@ -16,7 +16,7 @@ export const PostsPage = () => {
 
   return (
     <div>
-      {posts && 
+      {posts &&
       <ul>
         {posts.map((value) => <li key={value.id}><Post id={value.id} title={value.title} body={value.body} createdAt={value.createdAt} /></li>)}
       </ul>
