@@ -10,4 +10,11 @@ export type UserObject = {
   id: string,
   name: string,
   email: string,
+  avatarUrl: string,
+};
+
+export type AuthObject = {
+  userId: string,
+  password: string,
+  email: string,
 };
