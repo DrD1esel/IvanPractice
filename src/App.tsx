@@ -3,6 +3,7 @@ import "./App.css";
 import MainPage from './pages/MainPage/MainPage.tsx';
 import PostsPage from './pages/PostsPage/PostsPage.tsx';
 import SinglePostPage from './pages/SinglePostPage/SinglePostPage.tsx';
+import LoginPage from './pages/LoginPage/LoginPage.tsx';
 
 export const App = () => {
   const navigate = useNavigate()
@@ -20,6 +21,7 @@ export const App = () => {
           <Route path="/" Component={MainPage} />
           <Route path="/posts" Component={PostsPage} />
           <Route path="/posts/:postId" Component={SinglePostPage} />
+          <Route path="/login" Component={LoginPage} />
         </Routes>
     </>
   );
